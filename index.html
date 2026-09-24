@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="script.js" defer> </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
@@ -24,6 +26,35 @@
         name
         <input type="text" id="nameInput" placeholder="NAAAAAME">
     </label>
+    <label>
+        event organizer
+        <input type="text" id="organizerInput" placeholder="ORGAAAAAANIZER">
+    </label>
+    <label>
+        category
+        <input type="text" id="organizerInput" placeholder="CATEEEEGORY">
+    </label>
+    
+    <div></div>
+    
+    <button id="clearButton">clear active filters</button>
+    
+    <hr>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>description</th>
+                <th>organizer</th>
+                <th>category</th>
+                <th>rsvp count</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    
+    <p id="averageRSVPCount"></p>
 
 </body>
 </html>

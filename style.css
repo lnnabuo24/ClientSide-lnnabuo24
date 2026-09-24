@@ -1,0 +1,42 @@
+/*
+p {
+    color: red;
+}
+*/
+
+/* denote the clear filters button as the clear filters button */
+#clearButton {
+    font-size: 17px;
+    background-color: #f57600;
+    color: black;
+    margin: 5px;
+    border: 2px solid black;
+}
+
+#clearButton:hover {
+    background-color: #c44601;
+    color: white;
+    border: 2px solid red;
+}
+
+
+/* border around the table to separate it from the rest of the page */
+table {
+    width: 100%;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+/* wanted some borders between each cell */
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid black;
+}
+
+
+th {
+    background-color: gray;
+}
+

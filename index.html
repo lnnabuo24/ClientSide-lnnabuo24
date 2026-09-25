@@ -19,36 +19,40 @@
     
     -->
     
-    <p>some text here welcoming the user here hello</p>
+    <h1>Current Events</h1>
+    <p>Coe has a range of events to suit a variety of interests. Search and see what catches your eye!</p>
     
-    <p>filter by...</p>
+    <p id="filterLabel">Filter by...</p>
     <label>
-        name
-        <input type="text" id="nameInput" placeholder="NAAAAAME">
+        Event Name:
+        <input type="text" id="nameInput">
     </label>
+    <div></div>
     <label>
-        event organizer
-        <input type="text" id="organizerInput" placeholder="ORGAAAAAANIZER">
+        Event Organizer:
+        <input type="text" id="organizerInput">
     </label>
+    <div></div>
     <label>
-        category
-        <input type="text" id="organizerInput" placeholder="CATEEEEGORY">
+        Event Category:
+        <input type="text" id="categoryInput">
     </label>
     
     <div></div>
     
-    <button id="clearButton">clear active filters</button>
+    <button id="clearButton" class="button_clear">Clear active filters</button>
     
     <hr>
     
     <table>
         <thead>
             <tr>
-                <th>name</th>
-                <th>description</th>
-                <th>organizer</th>
-                <th>category</th>
-                <th>rsvp count</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Organizer</th>
+                <th>Category</th>
+                <th>RSVP Count</th>
             </tr>
         </thead>
         <tbody id="tableBody"></tbody>

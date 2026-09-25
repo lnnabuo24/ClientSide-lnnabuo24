@@ -27,10 +27,14 @@ h1 {
     font-weight: bold;
 }
 
-p {
-    text-align: center;
+body {
+    /* text-align: center; */
     font-size: 16px;
     font-family: Verdana, Arial, sans-serif;
+}
+
+.subtitle {
+    text-align: center;
 }
 
 #filterLabel {
@@ -47,6 +51,7 @@ input {
 
 button {
     font-size: 17px;
+    font-family: Verdana, Arial, sans-serif;
     margin: 5px;
     border: 2px solid black;
 }

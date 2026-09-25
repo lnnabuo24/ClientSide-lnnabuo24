@@ -1,0 +1,9 @@
+- Name
+Allows for events to be filtered by name
+- Category
+Allows users to filter by what they're interested in (Ex. looking for a new club to join, so they filter by club meetings)
+- Organizer
+Overlaps with category a bit, but lets users filter to find events for their clubs in particular
+- RSVP count
+Would eventually allow users to filter by a range of RSVPs for their event, basically gauging "popularity" (For example, they may prefer to go to smaller/more niche events)
+RSVP count can also be used to gauge the average "popularity" of the events the user is looking at (By aggregating and averaging all of the events that pass their filter, if any)

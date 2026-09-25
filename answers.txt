@@ -7,3 +7,7 @@ Overlaps with category a bit, but lets users filter to find events for their clu
 - RSVP count
 Would eventually allow users to filter by a range of RSVPs for their event, basically gauging "popularity" (For example, they may prefer to go to smaller/more niche events)
 RSVP count can also be used to gauge the average "popularity" of the events the user is looking at (By aggregating and averaging all of the events that pass their filter, if any)
+- Date
+Partially for user convenience (Knowing when an event is without the organizer needing to also include it somewhere in the description), in the future users would be able to filter events based on time and date (Ex. looking for events between 3 and 8 because they have work/class otherwise)
+- Description
+Originally for user convenience to easily give more info on events, but descriptions could be part of another filter in the future (Ex. filtering by keywords like "alumni" or "networking" in the description)

@@ -53,9 +53,19 @@ const tableBody = document.getElementById("tableBody");
 const nameInput = document.getElementById("nameInput");
 const organizerInput = document.getElementById("organizerInput");
 const categoryInput = document.getElementById("categoryInput");
+const timeInput_before = document.getElementById("timeInput_before");
+const timeInput_after = document.getElementById("timeInput_after");
 
 const averageRSVPCount = document.getElementById("averageRSVPCount");
 const filterClearButton = document.getElementById("clearButton");
+
+const inputs = [
+    nameInput,
+    organizerInput,
+    categoryInput,
+    timeInput_before,
+    timeInput_after
+];
 
 function populateTable(dataArray) {
     tableBody.innerHTML = "";
@@ -67,6 +77,8 @@ function populateTable(dataArray) {
     
     // my cool and amazing idea
     // "popular" events get a different color
+    // "popular" is currently defined as 1.5x the average rsvp count for the events being looked at
+    // think its a nice feature, shows some of the "standout" events
     const updatedArray = dataArray.map( (someEvent) => Object.assign({}, someEvent, {isPopular: (someEvent.rsvpCount >= (averageRSVP * 1.5))}) );
     /*
     const updatedArray = dataArray.map( (someEvent) => {
@@ -95,7 +107,7 @@ function populateTable(dataArray) {
         }
         */
 
-        // description was highlighted blue
+        // description was highlighted blue (scary)
         // so its now desc
         row.innerHTML = `
             <td>${event.name}</td>
@@ -143,8 +155,10 @@ updateTable = (triggeringEvent) => {
     const filterName = nameInput.value.toLowerCase();
     const filterOrganizer = organizerInput.value.toLowerCase();
     const filterCategory = categoryInput.value.toLowerCase();
+    const filter_timeBefore = timeInput_before.value; // events must occur before then
+    const filter_timeAfter = timeInput_after.value; // events must occur after then
     
-    const filteredUsers = events.filter(event => {
+    const filteredEvents = events.filter(event => {
         return (
             // filter by name
             (event.name.toLowerCase().includes(filterName))
@@ -154,12 +168,42 @@ updateTable = (triggeringEvent) => {
             &&
             // filter by category
             // (having dropdown is another option)
-            (event.category.toLowerCase().startsWith(filterCategory))
+            (event.category.toLowerCase().includes(filterCategory))
+            &&
+            // filter by time
+            // before
+            (!filter_timeBefore || (new Date(filter_timeBefore) > event.date))
+            &&
+            // after
+            (!filter_timeAfter || (new Date(filter_timeAfter) < event.date))
+            
         );
     });
-    populateTable(filteredUsers);
+    populateTable(filteredEvents);
     
-    if (filterName || filterOrganizer || filterCategory)
+    
+    // this feels ugly
+    // whenever i add a new input i have to hardcode including it here
+    // couldnt i just compare filteredEvents to the original table?
+    // my only issue is that if my name filter is something as broad as a single space " ", thats considered not having a filter
+    // (since im pretty sure all event names include a space somewhere)
+    
+    // okay, length works okay-ish
+    // the space issue is only missing because there is an event with a space
+    // except wait
+    // the space issue is theoretically also there with the organizer too, it just doesnt show up here
+    //isDifferent = (filteredEvents.length != events.length);
+    
+    const isDifferent = (filteredEvents.length != events.length) || !( events.every( (anEvent, index) => events.at(index) == filteredEvents.at(index) ) );
+    
+    // okay
+    // every() returns false if it finds something that doesnt satisfy the condition
+    // here, the condition is that the item at index whatever equals whatever the item at the same index in filteredEvents
+    // so it returns false if an item does NOT match (i think)
+    
+    //if (filterName || filterOrganizer || filterCategory || filter_timeBefore || filter_timeAfter)
+    //if (filteredEvents.length != events.length)
+    if (isDifferent)
     {
         // at least one filter is active
         console.log("enable me");
@@ -191,23 +235,39 @@ makeCategories = (eventList) => {
 }
 */
 
+/*
 nameInput.addEventListener("input", updateTable);
 organizerInput.addEventListener("input", updateTable);
 categoryInput.addEventListener("input", updateTable);
+timeInput_before.addEventListener("input", updateTable);
+timeInput_after.addEventListener("input", updateTable);
+*/
 // i copied and pasted
 // i feel bad now
+
+inputs.forEach( (someInput) => someInput.addEventListener("input", updateTable) );
 
 
 // filter button
 filterClearButton.addEventListener("click", () => {
     console.log("clear filters here");
+    /*
     nameInput.value = "";
     organizerInput.value = "";
     categoryInput.value = "";
+    timeInput_before.value = "";
+    timeInput_after.value = "";
+    */
     // hmmmm
     // this feels funny
     // or i guess smells funny
-    // ill have to manually remember to clear each new filter i add
+    
+    // this feels a lot cleaner
+    // does this violate mutability?
+    // its directly altering the inputs
+    // or is it fine?
+    inputs.forEach( (someInput) => someInput.value = "" );
+    
     updateTable();
 })
 

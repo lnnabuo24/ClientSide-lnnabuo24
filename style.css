@@ -21,10 +21,15 @@ p {
 }
 */
 
+/* the heading at the top of the page */
 h1 {
     text-align: center;
     font-size: 35px;
     font-weight: bold;
+    /*
+    background-color: #880011;
+    color: white;
+    */
 }
 
 body {
@@ -52,7 +57,10 @@ input {
 button {
     font-size: 17px;
     font-family: Verdana, Arial, sans-serif;
-    margin: 5px;
+    /* margin: 5px; */
+    margin-left: 2px; /* get the button aligned with the inputs */
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 2px solid black;
 }
 
@@ -63,14 +71,15 @@ button {
 
 .button_clear:hover {
     background-color: #c44601;
-    color: white;
+    color: white; /* text color */
     border: 2px solid red;
-    cursor: pointer;
+    cursor: pointer; /* changes the cursor when hovering over the button */
 }
 
 .button_clear_disabled {
     background-color: gray;
     color: white;
+    /* hovering no longer changes the pointer since the button is disabled */
 }
 
 
@@ -94,11 +103,9 @@ th {
     background-color: gray;
 }
 
+/* highlight popular events (relative to average rsvps) so they stand out */
 tr.popularEvent {
     background-color: orange;
     font-weight: bold;
     font-style: normal;
 }
-
-
-
